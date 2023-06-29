@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Culturize.DataAccess", "Cul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Culturize.Models", "Culturize.Models\Culturize.Models.csproj", "{E11259F1-7A67-4C68-A830-9B243EAA1F9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Culturize.Utility", "Culturize.SD\Culturize.Utility.csproj", "{E3F56CEE-DDB1-4315-A22A-95A283C0A3F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E11259F1-7A67-4C68-A830-9B243EAA1F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E11259F1-7A67-4C68-A830-9B243EAA1F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E11259F1-7A67-4C68-A830-9B243EAA1F9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3F56CEE-DDB1-4315-A22A-95A283C0A3F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3F56CEE-DDB1-4315-A22A-95A283C0A3F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3F56CEE-DDB1-4315-A22A-95A283C0A3F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3F56CEE-DDB1-4315-A22A-95A283C0A3F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

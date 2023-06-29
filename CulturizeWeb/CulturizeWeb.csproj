@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Culturize.DataAccess\Culturize.DataAccess.csproj" />
     <ProjectReference Include="..\Culturize.Models\Culturize.Models.csproj" />
+    <ProjectReference Include="..\Culturize.SD\Culturize.Utility.csproj" />
   </ItemGroup>
 
 </Project>
