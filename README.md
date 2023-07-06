@@ -27,11 +27,17 @@ No cadastro de empresas é possível criar/editar/excluir empresas.
 
 Para cumprir os requisitos do challenge, foram feitas as seguintes implementações:
 
+---
+
 **Requisito**: Integração com AzureStorage fazendo upload de um Blob
+
 **Solução**: É possível realizar upload de uma imagem para servir como logo da empresa. A imagem será armazenada como um Blob no Azure, e se for alterada ou a empresa for
 removida, o blob será atualizado de acordo.
 
+---
+
 **Requisito**: Possuir uma API
+
 **Solução**: A aplicação em sua maior parte utiliza MVC, então, para cumprir o requisito a exclusão de Empresas é feita por um [HttpDelete] que retorna JSON na CompanyController 
 (Admin/CompanyController/Delete).
 
