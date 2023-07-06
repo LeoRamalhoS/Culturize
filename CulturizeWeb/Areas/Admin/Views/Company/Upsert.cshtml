@@ -1,0 +1,90 @@
+﻿@model Company
+
+<div class="row">
+    <div class="col-12 col-md-8 mx-auto">
+        <form method="post" enctype="multipart/form-data">
+            <input asp-for="Id" hidden />
+            <input asp-for="LogoBlobFile" hidden />
+
+            <div class="border p-3 mt-4">
+                <div class="row pb-2">
+                    <h2 class="text-primary">@(Model.Id != 0 ? "Update" : "Create") Company</h2>
+                    <hr />
+                </div>
+                @*<div asp-validation-summary="All"></div>*@
+                <div class="row mb-3 px-4">
+                    <div class="col-8">
+                        <label asp-for="Name" class="p-0"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <img class="shadow" src="@Model.LogoUrl" width="100%" style="border-radius: 20px;" />
+                    </div>
+                </div>
+                <div class="row mb-3 px-4">
+                    <div class="col-12 col-md-3">
+                        <label asp-for="PostalCode" class="p-0"></label>
+                        <input asp-for="PostalCode" class="form-control" />
+                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label asp-for="Address" class="p-0"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="col-4 col-md-2">
+                        <label asp-for="AddressNumber" class="p-0"></label>
+                        <input asp-for="AddressNumber" class="form-control" />
+                        <span asp-validation-for="AddressNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3 px-4">
+                    <div class="col-3">
+                        <label asp-for="City" class="p-0"></label>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="Country" class="p-0"></label>
+                        <input asp-for="Country" class="form-control" />
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="Phone" class="p-0"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="row mb-3 px-4">
+                    <div col="12">
+                        <label asp-for="LogoBlobFile" class="p-0"></label>
+                        <input type="file" name="file" class="form-control" />
+                        <span asp-validation-for="LogoBlobFile" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary shadow-sm" style="width: 150px">
+                            @(Model.Id != 0 ? "Update" : "Create")
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <a asp-action="Index" class="btn btn-outline-secondary shadow-sm" style="width: 150px">
+                            Back to list
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
