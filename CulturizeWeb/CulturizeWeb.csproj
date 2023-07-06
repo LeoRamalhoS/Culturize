@@ -5,10 +5,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-CulturizeWeb-8c9da18d-0bd9-4ef9-8e09-889ac1023b9b</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/2e4ec4a0-7011-42ae-a84f-ec76b1959854/resourceGroups/rg-culturize/providers/microsoft.insights/components/ai-culturize</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.8" />
