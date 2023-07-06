@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'culturize'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_33206306151C41CE991003D512095E7F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_029F3FEAB0934E12838BE302B219A1C6 }}
           package: .
