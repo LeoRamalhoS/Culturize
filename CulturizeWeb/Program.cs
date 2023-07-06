@@ -17,7 +17,7 @@ builder.Services.AddControllersWithViews();
 //Add razor pages for Identity views
 builder.Services.AddRazorPages();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetSection("DefaultConnection").Value ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
 //Configure EF Core to connect to DB
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

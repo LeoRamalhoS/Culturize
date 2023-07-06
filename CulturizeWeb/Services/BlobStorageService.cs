@@ -12,7 +12,7 @@ namespace CulturizeWeb.Services
 
         public BlobStorageService(IConfiguration configuration)
         {
-            string conn = configuration.GetConnectionString("BlobConnection")!;
+            string conn = configuration.GetSection("BlobConnection").Value!;
             var blobServiceClient = new BlobServiceClient(conn);
             _containerClient = blobServiceClient.GetBlobContainerClient(_containerName);
         }
