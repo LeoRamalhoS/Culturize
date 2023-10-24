@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-CulturizeWeb-8c9da18d-0bd9-4ef9-8e09-889ac1023b9b</UserSecretsId>
-    <ApplicationInsightsResourceId>/subscriptions/2e4ec4a0-7011-42ae-a84f-ec76b1959854/resourceGroups/rg-culturize/providers/microsoft.insights/components/ai-culturize</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/bbdfeef1-7686-4dc0-ba3f-4b2a6233a863/resourceGroups/rg-culturize/providers/microsoft.insights/components/culturize</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
