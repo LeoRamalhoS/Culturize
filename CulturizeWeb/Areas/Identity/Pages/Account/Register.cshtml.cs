@@ -46,6 +46,7 @@ namespace CulturizeWeb.Areas.Identity.Pages.Account
             _userManager = userManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
+            _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
@@ -115,14 +116,6 @@ namespace CulturizeWeb.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!_roleManager.RoleExistsAsync(SD.Role_User).GetAwaiter().GetResult())
-            {
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_User)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_Leader)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_CompanyAdmin)).GetAwaiter().GetResult();
-            }
-
             Input = new InputModel()
             {
                 RoleList = _roleManager.Roles.Select(r => new SelectListItem

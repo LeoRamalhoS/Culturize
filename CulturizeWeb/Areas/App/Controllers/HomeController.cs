@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace CulturizeWeb.Areas.User.Controllers
 {
-    [Area("User")]
+    [Area("App")]
     [Authorize]
     public class HomeController : Controller
     {

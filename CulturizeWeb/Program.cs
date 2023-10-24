@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using CulturizeWeb.Services;
+using System;
+using Culturize.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,17 +45,35 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddScoped<IBlobStorageService, BlobStorageService>();
 builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
+builder.Services.AddScoped<IDbInitializerService, DbInitializerService>();
 
 var app = builder.Build();
+
+//Run migrations and seed database
+using (var scope = app.Services.CreateScope())
+{
+    //Migrations
+    var dbContext = scope.ServiceProvider
+        .GetRequiredService<ApplicationDbContext>();
+
+    dbContext.Database.Migrate();
+
+    //Initialize DB
+    var dbInitializer = scope.ServiceProvider
+        .GetRequiredService<IDbInitializerService>();
+
+    await dbInitializer.SeedDataBase();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
+    app.UseExceptionHandler("/Error");
 }
 else
 {
-    app.UseExceptionHandler("/User/Home/Error");
+    app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
@@ -67,7 +87,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{area=User}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=App}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapRazorPages();
 

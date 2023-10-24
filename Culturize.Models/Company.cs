@@ -28,6 +28,8 @@ namespace Culturize.Models
         public string? Phone { get; set; }
         public string? LogoBlobFile { get; set; }
 
+        public DateTime CreatedAt { get; set; }
+
         [NotMapped]
         [ValidateNever]
         public string LogoUrl { get; set; }
