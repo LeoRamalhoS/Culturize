@@ -6,11 +6,13 @@ namespace Culturize.DataAccess.Repository
     {
         private readonly ApplicationDbContext _db;
         public ICompanyRepository CompanyRepo { get; private set; }
+        public IApplicationUserRepository ApplicationUserRepo { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             CompanyRepo = new CompanyRepository(_db);
+            ApplicationUserRepo = new ApplicationUserRepository(_db);
         }
 
         public void Save()

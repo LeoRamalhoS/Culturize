@@ -1,10 +1,12 @@
 ﻿using CulturizeWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace CulturizeWeb.Areas.User.Controllers
 {
     [Area("User")]
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

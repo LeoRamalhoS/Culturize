@@ -16,6 +16,6 @@ namespace Culturize.Models
 
         [ForeignKey("CompanyID")]
         [ValidateNever]
-        public Company Company { get; set; }
+        public Company? Company { get; set; }
     }
 }

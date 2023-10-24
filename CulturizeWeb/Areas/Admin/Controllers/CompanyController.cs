@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CulturizeWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CompanyController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
