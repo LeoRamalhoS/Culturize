@@ -6,7 +6,7 @@ namespace CulturizeWeb.Services
     {
         Task UploadImageAsync(IFormFile formFile, string blobName);
 
-        BlobClient GetBlob(string blobName);
+        string GetBlobUri(string blobName);
 
         Task DeleteBlobAsync(string blobName);
     }

@@ -41,7 +41,7 @@ namespace CulturizeWeb.Areas.Admin.Controllers
                 return NotFound();
 
             if (!String.IsNullOrEmpty(model.LogoBlobFile))
-                model.LogoUrl = _blobStorage.GetBlob(model.LogoBlobFile).Uri.ToString();
+                model.LogoUrl = _blobStorage.GetBlobUri(model.LogoBlobFile);
 
             return View(model);
         }
