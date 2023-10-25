@@ -92,18 +92,66 @@ namespace CulturizeWeb.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var productList = _unitOfWork.CompanyRepo.GetAll();
+            var companies = _unitOfWork.CompanyRepo.GetAll();
             return Json(new
             {
-                data = productList
+                data = companies
             });
         }
 
         #region API Endpoints
 
+        [HttpPost]
+        public IActionResult Deactivate(int? id)
+        {
+            if (id == null || id == 0)
+                return Json(new { success = false, msg = "Company not found." });
+
+            var company = _unitOfWork.CompanyRepo.Get(u => u.Id == id);
+
+            if (company == null)
+                return Json(new { success = false, msg = "Company not found." });
+
+            if (!company.Active)
+                return Json(new { success = false, msg = "Company already inactive." });
+
+            company.DeactivatedAt = DateTime.Now;
+            company.Active = false;
+
+            _unitOfWork.CompanyRepo.Update(company);
+            _unitOfWork.Save();
+
+            return Json(new { success = true, msg = "Company deactivated successfully." });
+        }
+
+        [HttpPost]
+        public IActionResult Activate(int? id)
+        {
+            if (id == null || id == 0)
+                return Json(new { success = false, msg = "Company not found." });
+
+            var company = _unitOfWork.CompanyRepo.Get(u => u.Id == id);
+
+            if (company == null)
+                return Json(new { success = false, msg = "Company not found." });
+
+            if (company.Active)
+                return Json(new { success = false, msg = "Company already active." });
+
+            company.Active = true;
+
+            _unitOfWork.CompanyRepo.Update(company);
+            _unitOfWork.Save();
+
+            return Json(new { success = true, msg = "Company activated successfully." });
+        }
+
         [HttpDelete]
+        [Obsolete]
         public async Task<IActionResult> Delete(int? id)
         {
+            return Json(new { success = false, msg = "Endpoint deprecated." }); ;
+
             if (id == null || id == 0)
                 return Json(new { success = false, msg = "Company not found." });
 
@@ -123,6 +171,28 @@ namespace CulturizeWeb.Areas.Admin.Controllers
             return Json(new { success = true, msg = "Company deleted successfully." });
         }
 
+        [HttpPost]
+        public IActionResult GenerateDemoCompany()
+        {
+            _unitOfWork.CompanyRepo.Add(new Company
+            {
+                Active = true,
+                Address = "Address Demo Company",
+                AddressNumber = "123a",
+                City = "City Demo Company",
+                Country = "Brazil",
+                CreatedAt = DateTime.Now,
+                DeactivatedAt = null,
+                LogoBlobFile = null,
+                Name = "Demo Company",
+                ParentId = null,
+                Phone = "+55 (11) 98765-4321",
+                PostalCode = "9999999"
+            });
+            _unitOfWork.Save();
+
+            return Json(new { success = true, msg = "Demo company created !." });
+        }
         #endregion
     }
 }
